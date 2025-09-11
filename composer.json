@@ -16,6 +16,7 @@
         "rappasoft/laravel-authentication-log": "^5.0",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-medialibrary": "^11.14",
+        "theavuthnhel/filament-activity-timeline": "^1.0",
         "theavuthnhel/filament-turnstile": "^4.0.1"
     },
     "require-dev": {
@@ -30,7 +31,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Modules\\": "Modules/*/app",
+            "Modules\\": "Modules/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

@@ -19,8 +19,8 @@ class User extends Authenticatable
         HasRoles,
         Notifiable,
         LogsActivity,
-        InteractsWithMedia,
-        AuthenticationLoggable;
+        InteractsWithMedia;
+        // AuthenticationLoggable;
 
     protected $table = 'users';
 
