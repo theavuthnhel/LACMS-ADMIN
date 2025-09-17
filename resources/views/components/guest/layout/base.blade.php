@@ -75,13 +75,11 @@
                 --font-family: '{!! filament()->getFontFamily() !!}';
                 --mono-font-family: '{!! filament()->getMonoFontFamily() !!}';
                 --serif-font-family: '{!! filament()->getSerifFontFamily() !!}';
-                --sidebar-width: {{ filament()->getSidebarWidth() }};
-                --collapsed-sidebar-width: {{ filament()->getCollapsedSidebarWidth() }};
-                --default-theme-mode: {{ filament()->getDefaultThemeMode()->value }};
+                /* --sidebar-width: {{ filament()->getSidebarWidth() }}; */
+                /* --collapsed-sidebar-width: {{ filament()->getCollapsedSidebarWidth() }}; */
+                /* --default-theme-mode: {{ filament()->getDefaultThemeMode()->value }}; */
             }
         </style>
-
-        @stack('styles')
 
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::STYLES_AFTER, scopes: $renderHookScopes) }}
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::HEAD_END, scopes: $renderHookScopes) }}
@@ -89,6 +87,74 @@
         <style>
             body {
                 font-family: 'Kantumruy Pro', sans-serif;
+            }
+
+            .fi-input {
+                /* border-width: 1px; */
+                /* border-style: solid; */
+                /* border-color: #e5e7eb; */
+                padding: 0.6rem;
+            }
+            .fi-input-wrp {
+                border-width: 1px;
+                border-style: solid;
+                border-color: #e5e7eb;
+            }
+
+            input[type='checkbox'].fi-checkbox-input {
+                width: calc(var(--spacing) * 4);
+                height: calc(var(--spacing) * 4);
+                appearance: none;
+                border-radius: 0.25rem;
+                --tw-border-style: none;
+                border-style: none;
+                background-color: var(--color-white);
+                vertical-align: middle;
+                color: var(--primary-600);
+                --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+                --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+                box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+                --tw-ring-color: 
+                color-mix(in oklab, var(--gray-950) 10%, transparent);
+            }
+
+            /* .fi-color-primary {
+                --color-50: var(--primary-50);
+                --color-100: var(--primary-100);
+                --color-200: var(--primary-200);
+                --color-300: var(--primary-300);
+                --color-400: var(--primary-400);
+                --color-500: var(--primary-500);
+                --color-600: var(--primary-600);
+                --color-700: var(--primary-700);
+                --color-800: var(--primary-800);
+                --color-900: var(--primary-900);
+                --color-950: var(--primary-950);
+            } */
+
+            .fi-btn {
+                position: relative;
+                display: inline-grid;
+                grid-auto-flow: column;
+                align-items: center;
+                justify-content: center;
+                gap: calc(var(--spacing) * 1.5);
+                border-radius: var(--radius-lg);
+                padding-inline: calc(var(--spacing) * 3);
+                padding-block: calc(var(--spacing) * 3);
+                font-size: var(--text-md);
+                line-height: var(--tw-leading, var(--text-sm--line-height));
+                --tw-font-weight: var(--font-weight-semibold);
+                font-weight: var(--font-weight-semibold);
+                transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+                transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+                transition-duration: var(--tw-duration, var(--default-transition-duration));
+                --tw-duration: 75ms;
+                transition-duration: 75ms;
+                --tw-outline-style: none;
+                outline-style: none;
+                background-color: rgba(59,130,246,var(--tw-bg-opacity));
+                color: white;
             }
         </style>
     </head>

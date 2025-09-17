@@ -22,7 +22,7 @@ class CompanyLogin extends PagesLogin
             ->components([
                 $this->getEmailFormComponent(),
                 $this->getPasswordFormComponent(),
-                $this->getCaptchaFormComponent(),
+                // app()->environment() != 'local' ? $this->getCaptchaFormComponent() : null,
                 $this->getRememberFormComponent(),
             ]);
     }
@@ -43,7 +43,7 @@ class CompanyLogin extends PagesLogin
             ->required()
             ->autocomplete()
             ->autofocus()
-            ->extraInputAttributes(['tabindex' => 1, 'class' => '.fi-fo-text-input']);
+            ->extraInputAttributes(['tabindex' => 1]);
     }
 
     protected function getPasswordFormComponent(): Component
@@ -55,6 +55,6 @@ class CompanyLogin extends PagesLogin
             ->revealable(filament()->arePasswordsRevealable())
             ->autocomplete('current-password')
             ->required()
-            ->extraInputAttributes(['tabindex' => 2, 'class' => '.fi-fo-text-input']);
+            ->extraInputAttributes(['tabindex' => 2]);
     }
 }

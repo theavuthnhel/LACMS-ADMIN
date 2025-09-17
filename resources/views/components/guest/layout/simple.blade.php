@@ -11,7 +11,7 @@
     }
 @endphp
 
-<x-filament-panels::layout.base :livewire="$livewire">
+<x-guest.layout.base :livewire="$livewire">
     @props([
         'after' => null,
         'heading' => null,
@@ -50,4 +50,4 @@
 
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::SIMPLE_LAYOUT_END, scopes: $renderHookScopes) }}
     </div>
-</x-filament-panels::layout.base>
+</x-guest.layout.base>
