@@ -71,6 +71,8 @@
 
                 {{ $slot }}
 
+                @include("filament.guest.inc.contact")
+
                 {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::CONTENT_END, scopes: $renderHookScopes) }}
             </main>
 
