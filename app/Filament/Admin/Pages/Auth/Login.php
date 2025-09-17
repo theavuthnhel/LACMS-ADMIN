@@ -7,7 +7,7 @@ use Filament\Auth\Pages\Login as PagesLogin;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Width;
-use TheavuthNhel\FilamentTurnstile\Forms\Components\Turnstile;
+use Packages\FilamentTurnstile\Forms\Components\Turnstile;
 
 class Login extends PagesLogin
 {

@@ -1,0 +1,12 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/Guest/**/*';
+@source '../../../../app/Filament/Company/**/*';
+@source '../../../../resources/views/filament/guest/**/*';
+@source '../../app/**/*';
+@source '../../resources/views/**/*';
+@source '../../resources/views/filament/**/*';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
