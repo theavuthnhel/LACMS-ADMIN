@@ -173,7 +173,7 @@
         
         <header class="bg-white shadow-sm">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center py-4">
+                <div class="flex justify-between items-start py-2">
 
                     <div class="flex items-center">
                         <img alt="Ministry of Labour and Vocational Training logo" class="h-36 w-auto" src="https://lacms.mlvt.gov.kh/backend/img/mlvt_banner_logo_1.jpg"/>
@@ -184,13 +184,13 @@
                     </div>
 
                     <div class="flex items-center space-x-4">
-                        <button class="flex items-center space-x-1 text-gray-700">
+                        <button class="flex items-center space-x-1 text-gray-700 rounded-full py-2 px-4 bg-blue-600">
                             <img alt="Cambodian flag" class="w-6 h-4" src="https://lacms.mlvt.gov.kh/backend/img/km.png"/>
-                            <span>ភាសាខ្មែរ</span>
+                            <span class="text-white hover:text-white">ភាសាខ្មែរ</span>
                         </button>
-                        <button class="flex items-center space-x-1 text-gray-700">
+                        <button class="flex items-center space-x-1 border rounded-full py-2 px-4 hover:bg-blue-600">
                             <img alt="British flag" class="w-6 h-4" src="https://lacms.mlvt.gov.kh/backend/img/en_new.png"/>
-                            <span>English</span>
+                            <span class="text-gray-700 hover:text-white">English</span>
                         </button>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-center h-16">
                     <div class="hidden md:flex items-center space-x-4">
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600" href="{{ route('filament.guest.pages..') }}">
+                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages..') ? 'bg-blue-600' : '' }}" href="{{ route('filament.guest.pages..') }}">
                             <span class="material-icons align-middle text-base">home</span>
                             <span>ទំព័រដើម</span>
                         </a>
