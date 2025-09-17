@@ -234,12 +234,6 @@
             </script>
         @endif
 
-        @if (filament()->hasDarkMode() && (! filament()->hasDarkModeForced()))
-            <script>
-                loadDarkMode()
-            </script>
-        @endif
-
         @stack('scripts')
 
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::SCRIPTS_AFTER, scopes: $renderHookScopes) }}
