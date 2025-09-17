@@ -63,7 +63,7 @@
 
             <main
                 @class([
-                    'fi-main',
+                    '',
                     ($maxContentWidth instanceof Width) ? "fi-width-{$maxContentWidth->value}" : $maxContentWidth,
                 ])
             >
