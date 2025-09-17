@@ -184,13 +184,13 @@
                     </div>
 
                     <div class="flex items-center space-x-4">
-                        <button class="flex items-center space-x-1 text-gray-700 rounded-full py-2 px-4 bg-blue-600">
+                        <button class="flex items-center space-x-1 text-gray-700 rounded-full py-2 px-4 bg-blue-600 text-gray-700 hover:text-white hover:border-0">
                             <img alt="Cambodian flag" class="w-6 h-4" src="https://lacms.mlvt.gov.kh/backend/img/km.png"/>
-                            <span class="text-white hover:text-white">ភាសាខ្មែរ</span>
+                            <span class="text-white">ភាសាខ្មែរ</span>
                         </button>
-                        <button class="flex items-center space-x-1 border rounded-full py-2 px-4 hover:bg-blue-600">
+                        <button class="flex items-center space-x-1 border rounded-full py-2 px-4 hover:bg-blue-600 text-gray-700 hover:text-white hover:border-0">
                             <img alt="British flag" class="w-6 h-4" src="https://lacms.mlvt.gov.kh/backend/img/en_new.png"/>
-                            <span class="text-gray-700 hover:text-white">English</span>
+                            <span class="">English</span>
                         </button>
                     </div>
                 </div>
