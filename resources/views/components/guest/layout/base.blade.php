@@ -201,16 +201,16 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-center h-16">
                     <div class="hidden md:flex items-center space-x-4">
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages..') ? 'bg-blue-600' : '' }}" href="{{ route('filament.guest.pages..') }}">
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages..') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages..') }}">
                             <span class="material-icons align-middle text-base">home</span>
                             <span>ទំព័រដើម</span>
                         </a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.guidline') ? 'bg-blue-600' : '' }}" href="{{ route('filament.guest.pages.client.guidline') }}">សៀវភៅណែនាំ</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.prokas') ? 'bg-blue-600' : '' }}" href="{{ route('filament.guest.pages.client.prokas') }}">លិខិតបទដ្ឋាន</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.close.document') ? 'bg-blue-600' : '' }}" href="{{ route('filament.guest.pages.client.close.document') }}">លិខិតធ្វើបច្ចុប្បន្នភាពនិងបិទសហគ្រាស</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.faq') ? 'bg-blue-600' : '' }}" href="{{ route('filament.guest.pages.client.faq') }}">សំនួរ និងចម្លើយ</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.video') ? 'bg-blue-600' : '' }}" href="{{ route('filament.guest.pages.client.video') }}">វីដេអូនៃការប្រើប្រាស់</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-md text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.officer.auth.login') ? 'bg-blue-600' : '' }}" href="{{ route('filament.officer.auth.login') }}"><span class="material-icons align-middle text-base">lock</span> ចូលជាមន្ត្រីត្រួតពិនិត្យ</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.guidline') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.guidline') }}">សៀវភៅណែនាំ</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.prokas') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.prokas') }}">លិខិតបទដ្ឋាន</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.close.document') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.close.document') }}">លិខិតធ្វើបច្ចុប្បន្នភាពនិងបិទសហគ្រាស</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.faq') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.faq') }}">សំនួរ និងចម្លើយ</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.video') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.video') }}">វីដេអូនៃការប្រើប្រាស់</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.officer.auth.login') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.officer.auth.login') }}"><span class="material-icons align-middle text-base">lock</span> ចូលជាមន្ត្រីត្រួតពិនិត្យ</a>
                     </div>
                     <div class="md:hidden">
                         <button class="text-white focus:outline-none">

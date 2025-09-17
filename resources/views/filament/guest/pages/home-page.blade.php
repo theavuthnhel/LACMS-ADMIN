@@ -35,13 +35,13 @@
         </div>
     </section>
     <div class="text-center mt-6">
-        <button class="bg-green-500 text-white font-bold py-3 px-8 rounded-md hover:bg-green-600 transition duration-300">Upload បញ្ជីឈ្មោះបច្ចុប្បន្នភាពរបស់កម្មករនិយោជិត</button>
+        <button class="bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600 transition duration-300">Upload បញ្ជីឈ្មោះបច្ចុប្បន្នភាពរបស់កម្មករនិយោជិត</button>
     </div>
     <section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="bg-gradient-to-br from-blue-700 to-blue-900 p-8 rounded-lg text-white text-center">
+        <div class="bg-gradient-to-br from-blue-300 to-blue-800 p-8 rounded-lg text-white text-center">
             <div class="flex justify-center mb-6">
                 <div class="bg-white p-4 rounded-full">
-                    <span class="material-icons text-blue-800 text-5xl">factory</span>
+                    <span class="material-icons text-blue-800 text-6xl">factory</span>
                 </div>
             </div>
             <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម ម្ចាស់រោងចក្រ សហគ្រាស ត្រូវ</h3>
@@ -50,18 +50,18 @@
                 <a class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300" href="{{ route('filament.company.auth.login') }}">ចូលគណនី</a>
             </div>
         </div>
-    <div class="bg-gradient-to-br from-blue-700 to-blue-900 p-8 rounded-lg text-white text-center">
-    <div class="flex justify-center mb-6">
-    <div class="bg-white p-4 rounded-full">
-    <span class="material-icons text-cyan-500 text-5xl">groups</span>
-    </div>
-    </div>
-    <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម កម្មករនិយោជិត ត្រូវ</h3>
-    <div class="space-x-4">
-    <button class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">ចូលឈ្មោះ</button>
-    <button class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-cyan-500 transition duration-300">ចូលគណនី</button>
-    </div>
-    </div>
+        <div class="bg-gradient-to-br from-green-300 to-green-900 p-8 rounded-lg text-white text-center">
+            <div class="flex justify-center mb-6">
+                <div class="bg-white p-4 rounded-full">
+                    <span class="material-icons text-cyan-500 text-5xl">groups</span>
+                </div>
+            </div>
+            <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម កម្មករនិយោជិត ត្រូវ</h3>
+            <div class="space-x-4">
+                <button class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">ចូលឈ្មោះ</button>
+                <button class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300">ចូលគណនី</button>
+            </div>
+        </div>
     </section>
     
 </div>
