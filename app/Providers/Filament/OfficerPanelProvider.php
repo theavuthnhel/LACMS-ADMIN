@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Officer\Pages\Auth\OfficerLogin;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -27,8 +28,9 @@ class OfficerPanelProvider extends PanelProvider
             ->id('officer')
             ->path('officer')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
+            ->login(OfficerLogin::class)
             ->discoverResources(in: app_path('Filament/Officer/Resources'), for: 'App\Filament\Officer\Resources')
             ->discoverPages(in: app_path('Filament/Officer/Pages'), for: 'App\Filament\Officer\Pages')
             ->pages([
