@@ -1,26 +1,28 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\User;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
+use Spatie\MediaLibrary\HasMedia;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Activitylog\LogOptions;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMedia
 {
     use SoftDeletes, HasFactory,
+        HasApiTokens,
         HasRoles,
         Notifiable,
         LogsActivity,
-        InteractsWithMedia;
-        // AuthenticationLoggable;
+        InteractsWithMedia,
+        AuthenticationLoggable;
 
     protected $table = 'users';
 
@@ -241,29 +243,29 @@ class User extends Authenticatable
     }
 
     public function company(){
-        return $this->hasOne('Modules\Company\Entities\Company', 'created_by');
+        return $this->hasOne('App\Models\Company\Company', 'created_by');
     }
     public function partner()
     {
-        return $this->belongsTo('Modules\Physical\Entities\PhysicalPartner', 'partner_id');
+        return $this->belongsTo('App\Models\Physical\PhysicalPartner', 'partner_id');
     }
     public function bio()
     {
-        return $this->hasOne('Modules\Bio\Entities\Bio', 'created_by');
+        return $this->hasOne('App\Models\Bio\Bio', 'created_by');
     }
     public function verify()
     {
-        return $this->hasMany('Modules\User\Entities\UserVerify', 'user_id');
+        return $this->hasMany('App\Models\User\UserVerify', 'user_id');
     }
 
     public function declined()
     {
-        return $this->hasMany('Modules\User\Entities\UserDecline', 'user_id');
+        return $this->hasMany('App\Models\User\UserDecline', 'user_id');
     }
 
     public function void()
     {
-        return $this->hasMany('Modules\User\Entities\UserVoid', 'user_id');
+        return $this->hasMany('App\Models\User\UserVoid', 'user_id');
     }
     public function findForPassport(string $username): User
     {
@@ -272,8 +274,8 @@ class User extends Authenticatable
     public function level()
     {
         return $this->hasManyThrough(
-            'Modules\User\Entities\Level',
-            'Modules\User\Entities\ModelHasRole',
+            'App\Models\User\Level',
+            'App\Models\User\ModelHasRole',
             'model_id', // Foreign key on users table...
             'role_id', // Foreign key on history table...
             'id',
@@ -282,6 +284,7 @@ class User extends Authenticatable
     }
     public function branch()
     {
-        return $this->morphToMany("Modules\User\Entities\Branch", 'branchables');
+        return $this->morphToMany("App\Models\User\Branch", 'branchables');
     }
+
 }
