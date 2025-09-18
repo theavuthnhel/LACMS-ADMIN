@@ -3,7 +3,7 @@
         <h2 class="text-2xl md:text-3xl font-bold text-blue-800">សូមស្វាគមន៍មកកាន់ប្រព័ន្ធគ្រប់គ្រងទិន្នន័យរួមពាក់ព័ន្ធវិស័យការងារ <br>
 កម្រងសេវាស្វ័យប្រវត្តិកម្មពាក់ព័ន្ធវិស័យការងារ</h2>
         <!-- <h3 class="text-xl md:text-2xl font-bold text-blue-800 mt-2">តាមប្រព័ន្ធស្វ័យប្រវត្តិកម្មផ្នែកព័ត៌មានវិទ្យា</h3> -->
-        <button class="mt-6 bg-red-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-red-600 transition duration-300">ចុះឈ្មោះស្វែងរកបុគ្គលិក</button>
+        <button class="mt-6 shine-effect bg-gradient-to-r from-red-400 to-red-900 text-white font-bold py-4 px-16 rounded-full shadow-lg text-2xl transition duration-300">ចុះឈ្មោះស្វែងរកបុគ្គលិក</button>
     </section>
 
     <section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -156,6 +156,30 @@
                 background-color: rgba(59,130,246,var(--tw-bg-opacity));
                 color: white;
             }
+
+            .shine-effect {
+                position: relative;
+                overflow: hidden;
+            }
+            .shine-effect::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 20%;
+                height: 200%;
+                background: rgba(255, 255, 255, 0.4);
+                transform: rotate(45deg);
+                animation: shine 2s infinite;
+            }
+            @keyframes shine {
+                0% {
+                    left: -50%;
+                }
+                100% {
+                    left: 150%;
+                }
+            }
         </style>
     </head>
 
