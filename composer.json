@@ -12,12 +12,13 @@
         "coolsam/modules": "5.x",
         "filament/filament": "^4.0",
         "laravel/framework": "^12.0",
+        "laravel/passport": "^13.2",
         "laravel/tinker": "^2.10.1",
+        "packages/filament-turnstile": "@dev",
         "rappasoft/laravel-authentication-log": "^5.0",
         "spatie/laravel-activitylog": "^4.10",
         "spatie/laravel-medialibrary": "^11.14",
-        "theavuthnhel/filament-activity-timeline": "^1.0",
-        "packages/filament-turnstile": "@dev"
+        "theavuthnhel/filament-activity-timeline": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
