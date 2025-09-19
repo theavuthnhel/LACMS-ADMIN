@@ -46,7 +46,7 @@
             </div>
             <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម ម្ចាស់រោងចក្រ សហគ្រាស ត្រូវ</h3>
             <div class="space-x-4">
-                <a class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300" href="{{ route('filament.company.auth.login') }}">ចូលឈ្មោះ</a>
+                <a class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300" href="{{ route('filament.guest.pages.company-register') }}">ចូលឈ្មោះ</a>
                 <a class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300" href="{{ route('filament.company.auth.login') }}">ចូលគណនី</a>
             </div>
         </div>
