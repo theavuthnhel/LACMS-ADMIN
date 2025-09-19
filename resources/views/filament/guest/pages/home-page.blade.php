@@ -1,12 +1,11 @@
-<div>
+<div class="khmer_body_font">
     <section class="text-center">
-        <h2 class="text-2xl md:text-3xl font-bold text-blue-800">សូមស្វាគមន៍មកកាន់ប្រព័ន្ធគ្រប់គ្រងទិន្នន័យរួមពាក់ព័ន្ធវិស័យការងារ <br>
+        <h2 class="text-2xl md:text-2xl" style="line-height: 1.7">សូមស្វាគមន៍មកកាន់ប្រព័ន្ធគ្រប់គ្រងទិន្នន័យរួមពាក់ព័ន្ធវិស័យការងារ <br>
 កម្រងសេវាស្វ័យប្រវត្តិកម្មពាក់ព័ន្ធវិស័យការងារ</h2>
-        <!-- <h3 class="text-xl md:text-2xl font-bold text-blue-800 mt-2">តាមប្រព័ន្ធស្វ័យប្រវត្តិកម្មផ្នែកព័ត៌មានវិទ្យា</h3> -->
-        <button class="mt-6 shine-effect bg-gradient-to-r from-red-400 to-red-900 text-white font-bold py-4 px-16 rounded-full shadow-lg text-2xl transition duration-300">ចុះឈ្មោះស្វែងរកបុគ្គលិក</button>
+        <button class="mt-6 shine-effect bg-gradient-to-r from-red-400 to-red-900 text-white font-bold py-4 px-16 rounded-full shadow-lg text-2xl transition duration-300 khmer_body_font">ចុះឈ្មោះស្វែងរកបុគ្គលិក</button>
     </section>
 
-    <section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8" style="font-size: 11pt">
         <div>
             <ul class="space-y-3">
                 <li class="bg-white hover:bg-blue-500 text-md font-medium hover:text-white p-4 rounded-lg shadow-sm hover:shadow-md flex justify-between items-center cursor-pointer">១.ការចុះបញ្ជិកាសេចក្ដីប្រកាសជូនដំណឹងបើកសហគ្រាស (MLVT)</li>
@@ -46,7 +45,7 @@
             </div>
             <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម ម្ចាស់រោងចក្រ សហគ្រាស ត្រូវ</h3>
             <div class="space-x-4">
-                <a class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300" href="{{ route('filament.guest.pages.company-register') }}">ចូលឈ្មោះ</a>
+                <a class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300" href="{{ route('filament.guest.pages.company-register') }}">ចុះឈ្មោះ</a>
                 <a class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300" href="{{ route('filament.company.auth.login') }}">ចូលគណនី</a>
             </div>
         </div>
@@ -58,8 +57,8 @@
     </div>
     <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម កម្មករនិយោជិត ត្រូវ</h3>
     <div class="space-x-4">
-        <a href="{{ route('filament.guest.pages.sign-up') }}" class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">ចូលឈ្មោះ</a>
-        <a class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-cyan-500 transition duration-300">ចូលគណនី</a>
+        <a href="{{ route('filament.guest.pages.sign-up') }}" class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">ចុះឈ្មោះ</a>
+        <a href="{{ route('filament.worker.auth.login') }}" class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-cyan-500 transition duration-300">ចូលគណនី</a>
     </div>
     </div>
     </section>

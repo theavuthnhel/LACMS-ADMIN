@@ -71,23 +71,71 @@
         {{ filament()->getSerifFontHtml() }}
 
         <style>
-            :root {
+            /* :root {
                 --font-family: '{!! filament()->getFontFamily() !!}';
                 --mono-font-family: '{!! filament()->getMonoFontFamily() !!}';
                 --serif-font-family: '{!! filament()->getSerifFontFamily() !!}';
-                /* --sidebar-width: {{ filament()->getSidebarWidth() }}; */
-                /* --collapsed-sidebar-width: {{ filament()->getCollapsedSidebarWidth() }}; */
-                /* --default-theme-mode: {{ filament()->getDefaultThemeMode()->value }}; */
+            } */
+
+
+            :root {
+                --font-family: 'Source Sans Pro', 'Helvetica Neue', 'Battambang', Helvetica, Arial, sans-serif;
+                --sidebar-width: {{ filament()->getSidebarWidth() }};
             }
+            .h-24 {
+                height: 6rem;
+            }
+
+            .h10{
+                height: 3rem;
+            }
+
+            .h-36 {
+                height: 10rem;
+            }
+
+            .justify-center-1 {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .fi-btn-label{
+                min-width: 48px;
+            }
+
+            .choices__list--dropdown .choices__list, .choices__list[aria-expanded] .choices__list {
+                max-height: 8rem;
+                overflow: auto;
+                will-change: scroll-position;
+            }
+
+            .fi-main {
+                padding-inline: calc(var(--spacing) * 3);
+            }
+
+            .fi-sidebar-nav{
+                row-gap: calc(var(--spacing) * 0);
+                padding-block: calc(var(--spacing) * 4);
+            }
+
+            .fi-sidebar-nav-groups {
+                row-gap: calc(var(--spacing) * 0);
+            }
+
+            .fi-page-header-main-ctn {
+                padding-block: calc(var(--spacing) * 3);
+                row-gap: calc(var(--spacing) * 4);
+            }
+            
         </style>
 
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::STYLES_AFTER, scopes: $renderHookScopes) }}
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::HEAD_END, scopes: $renderHookScopes) }}
         
         <style>
-            body {
+            /* body {
                 font-family: 'Kantumruy Pro', sans-serif;
-            }
+            } */
 
             .fi-input {
                 /* border-width: 1px; */
@@ -212,29 +260,29 @@
                             <img alt="Cambodian flag" class="w-6 h-4" src="https://lacms.mlvt.gov.kh/backend/img/km.png"/>
                             <span class="text-white">ភាសាខ្មែរ</span>
                         </button>
-                        <button class="flex items-center space-x-1 border rounded-full py-2 px-4 hover:bg-blue-600 text-gray-700 hover:text-white hover:border-0">
+                        {{-- <button class="flex items-center space-x-1 border rounded-full py-2 px-4 hover:bg-blue-600 text-gray-700 hover:text-white hover:border-0">
                             <img alt="British flag" class="w-6 h-4" src="https://lacms.mlvt.gov.kh/backend/img/en_new.png"/>
                             <span class="">English</span>
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
             </div>
         </header>
 
-        <nav class="bg-blue-500">
+        <nav class="bg-blue-500  khmer_body_font">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-center h-16">
-                    <div class="hidden md:flex items-center space-x-4">
-                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages..') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages..') }}">
-                            <span class="material-icons align-middle text-base">home</span>
+                    <div class="hidden md:flex items-center space-x-0">
+                        <a class="text-white px-3 py-2 rounded-full text-sm font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages..') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages..') }}">
+                            <span class="material-icons align-middle" style="font-size: 20px">home</span>
                             <span>ទំព័រដើម</span>
                         </a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.guidline') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.guidline') }}">សៀវភៅណែនាំ</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.prokas') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.prokas') }}">លិខិតបទដ្ឋាន</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.close.document') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.close.document') }}">លិខិតធ្វើបច្ចុប្បន្នភាពនិងបិទសហគ្រាស</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.faq') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.faq') }}">សំនួរ និងចម្លើយ</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.video') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.video') }}">វីដេអូនៃការប្រើប្រាស់</a>
-                        <a class="text-white px-3 py-2 font-semibold rounded-full text-md font-medium hover:bg-blue-600 {{ request()->routeIs('filament.officer.auth.login') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.officer.auth.login') }}"><span class="material-icons align-middle text-base">lock</span> ចូលជាមន្ត្រីត្រួតពិនិត្យ</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-sm  hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.guidline') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.guidline') }}">សៀវភៅណែនាំ</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-sm  hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.prokas') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.prokas') }}">លិខិតបទដ្ឋាន</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-sm  hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.close.document') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.close.document') }}">លិខិតធ្វើបច្ចុប្បន្នភាពនិងបិទសហគ្រាស</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-sm  hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.faq') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.faq') }}">សំនួរ និងចម្លើយ</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-sm  hover:bg-blue-600 {{ request()->routeIs('filament.guest.pages.client.video') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.guest.pages.client.video') }}">វីដេអូនៃការប្រើប្រាស់</a>
+                        <a class="text-white px-3 py-2 font-semibold rounded-full text-sm  hover:bg-blue-600 {{ request()->routeIs('filament.officer.auth.login') ? 'bg-blue-600 rounded-full' : '' }}" href="{{ route('filament.officer.auth.login') }}"><span class="material-icons align-middle" style="font-size: 20px">lock</span> ចូលជាមន្ត្រីត្រួតពិនិត្យ</a>
                     </div>
                     <div class="md:hidden">
                         <button class="text-white focus:outline-none">
@@ -245,16 +293,16 @@
             </div>
         </nav>
 
-        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <main class="sm:px-6 lg:px-8 py-8">
             {{ $slot }}
         </main>
 
         <footer class="bg-gray-100 py-4 border-t border-gray-200 w-full bottom-0">
             <div class="flex flex-row justify-between items-center mx-auto px-4 sm:px-6 lg:px-8">
-                <div>
+                <div class="text-sm">
                     © ២០២៥ រក្សាសិទ្ធិគ្រប់យ៉ាងដោយ <a href="http://mlvt.gov.kh" class="text-blue-600" target="_blank">ក្រសួងការងារ និងបណ្តុះបណ្ដាលវិជ្ជាជីវៈនៃព្រះរាជាណាចក្រកម្ពុជា</a>
                 </div>
-                <div class="pull-right hidden-xs">
+                <div class="pull-right hidden-xs text-sm">
                     <b>ជំនាន់</b> 3.0.0
                 </div>
             </div>

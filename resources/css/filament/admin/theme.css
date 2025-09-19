@@ -3,3 +3,81 @@
 @source '../../../../app/Filament/Admin/**/*';
 @source '../../../../resources/views/filament/admin/**/*';
 @source "../../../../vendor/theavuthnhel/filament-activity-timeline/resources/views/**/*.blade.php";
+
+
+.justify-center-1 {
+    justify-content: center;
+    text-align: center;
+}
+
+@media (max-width: 912px) {
+    .fi-pagination {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .fi-pagination .text-sm {
+        display: block !important;
+    }
+}
+
+h1,
+h2 {
+    font-family: "Source Sans Pro", "Helvetica Neue", "Moul", Helvetica, Arial,
+        sans-serif;
+}
+
+h3,
+h4,
+h5 {
+    font-family: "Source Sans Pro", "Helvetica Neue", "Battambang", Helvetica, Arial,
+        sans-serif;
+}
+
+h3 {
+    font-size: 14pt !important;
+}
+
+body {
+    font-family: "Source Sans Pro", "Helvetica Neue", "Battambang", Helvetica,
+        Arial, sans-serif;
+}
+
+.filament-header {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.khmer_header_font {
+    font-family: "Source Sans Pro", "Helvetica Neue", "Moul", Helvetica, Arial,
+        sans-serif;
+    line-height: 1.7;
+}
+
+.khmer_body_font {
+    font-family: "Source Sans Pro", "Helvetica Neue", "Battambang", Helvetica,
+        Arial, sans-serif;
+}
+
+.fi-simple-main-ctn {
+    display: flex;
+    width: 100%;
+    flex-grow: 0 !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.fi-select-input-value-ctn {
+    color: var(--gray-400) !important;
+}
+
+.fi-select-input-value-label {
+    color: var(--gray-950) !important;
+}
+
+.fi-btn {
+    min-width: 5rem;
+}
