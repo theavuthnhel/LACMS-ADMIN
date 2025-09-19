@@ -238,7 +238,8 @@
                     @class([
                         'fi-modal-footer',
                         'fi-sticky' => $stickyFooter,
-                        ($footerActionsAlignment instanceof Alignment) ? "fi-align-{$footerActionsAlignment->value}" : null,
+                        ($footerActionsAlignment instanceof Alignment) ? "fi-align-center" : null,
+                        // ($footerActionsAlignment instanceof Alignment) ? "fi-align-{$footerActionsAlignment->value}" : null,
                     ])
                 >
                     @if (! \Filament\Support\is_slot_empty($footer))
