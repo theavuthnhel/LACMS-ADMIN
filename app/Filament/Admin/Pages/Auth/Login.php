@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Pages\Auth;
 
 use BackedEnum;
 use Filament\Auth\Pages\Login as PagesLogin;
+use Filament\Forms\Components\Select;
 use Filament\Schemas\Components\Component;
 use Filament\Schemas\Schema;
 use Filament\Support\Enums\Width;
@@ -30,6 +31,7 @@ class Login extends PagesLogin
                 $this->getPasswordFormComponent(),
                 app()->environment() != 'local' && $this->getCaptchaFormComponent(),
                 $this->getRememberFormComponent(),
+                $this->getSelectionTest(),
             ]);
     }
 
@@ -39,5 +41,13 @@ class Login extends PagesLogin
             ->theme('auto') // accepts light, dark, auto
             ->language('en-US') // see below
             ->size('normal'); // accepts normal, compact
+    }
+
+    protected function getSelectionTest(): Component
+    {
+        return Select::make("test")
+            ->options([1 => "est"])
+            ->searchable()
+            ->required();
     }
 }
