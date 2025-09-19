@@ -50,18 +50,18 @@
                 <a class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300" href="{{ route('filament.company.auth.login') }}">ចូលគណនី</a>
             </div>
         </div>
-        <div class="bg-gradient-to-br from-green-300 to-green-900 p-8 rounded-lg text-white text-center">
-            <div class="flex justify-center mb-6">
-                <div class="bg-white p-4 rounded-full">
-                    <span class="material-icons text-cyan-500 text-5xl">groups</span>
-                </div>
-            </div>
-            <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម កម្មករនិយោជិត ត្រូវ</h3>
-            <div class="space-x-4">
-                <button class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">ចូលឈ្មោះ</button>
-                <button class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-blue-800 transition duration-300">ចូលគណនី</button>
-            </div>
-        </div>
+    <div class="bg-gradient-to-br from-blue-700 to-blue-900 p-8 rounded-lg text-white text-center">
+    <div class="flex justify-center mb-6">
+    <div class="bg-white p-4 rounded-full">
+    <span class="material-icons text-cyan-500 text-5xl">groups</span>
+    </div>
+    </div>
+    <h3 class="text-2xl font-bold mb-6">ដើម្បីប្រើប្រាស់សេវាស្វ័យប្រវត្តិកម្ម កម្មករនិយោជិត ត្រូវ</h3>
+    <div class="space-x-4">
+        <a href="{{ route('filament.guest.pages.sign-up') }}" class="bg-white text-blue-800 font-bold py-3 px-8 rounded-full hover:bg-gray-200 transition duration-300">ចូលឈ្មោះ</a>
+        <a class="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-cyan-500 transition duration-300">ចូលគណនី</a>
+    </div>
+    </div>
     </section>
-    
+
 </div>
