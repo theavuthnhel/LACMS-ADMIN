@@ -133,14 +133,7 @@
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::HEAD_END, scopes: $renderHookScopes) }}
         
         <style>
-            /* body {
-                font-family: 'Kantumruy Pro', sans-serif;
-            } */
-
             .fi-input {
-                /* border-width: 1px; */
-                /* border-style: solid; */
-                /* border-color: #e5e7eb; */
                 padding: 0.6rem;
             }
             .fi-input-wrp {
@@ -165,21 +158,7 @@
                 --tw-ring-color: 
                 color-mix(in oklab, var(--gray-950) 10%, transparent);
             }
-
-            /* .fi-color-primary {
-                --color-50: var(--primary-50);
-                --color-100: var(--primary-100);
-                --color-200: var(--primary-200);
-                --color-300: var(--primary-300);
-                --color-400: var(--primary-400);
-                --color-500: var(--primary-500);
-                --color-600: var(--primary-600);
-                --color-700: var(--primary-700);
-                --color-800: var(--primary-800);
-                --color-900: var(--primary-900);
-                --color-950: var(--primary-950);
-            } */
-
+            
             .fi-btn {
                 position: relative;
                 display: inline-grid;
