@@ -17,7 +17,7 @@ use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 class User extends Authenticatable implements HasMedia
 {
     use SoftDeletes, HasFactory,
-        HasApiTokens,
+        // HasApiTokens,
         HasRoles,
         Notifiable,
         LogsActivity,

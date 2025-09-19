@@ -6,4 +6,5 @@ return [
     App\Providers\Filament\CompanyPanelProvider::class,
     App\Providers\Filament\GuestPanelProvider::class,
     App\Providers\Filament\OfficerPanelProvider::class,
+    App\Providers\Filament\WorkerPanelProvider::class,
 ];
