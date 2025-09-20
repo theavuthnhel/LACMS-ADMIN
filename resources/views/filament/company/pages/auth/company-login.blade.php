@@ -14,7 +14,7 @@
             <div class="flex mt-2 justify-end">
                 <div>
                     <span>ភ្លេចលេខសម្ងាត់?</span>
-                    <a href="" class="text-red-600 font-semibold">អ៊ីម៉ែល</a>
+                    <a href="{{ url(filament()->getRequestPasswordResetUrl()) }}" class="text-red-600 font-semibold">អ៊ីម៉ែល</a>
                 </div>
             </div>
         </div>
