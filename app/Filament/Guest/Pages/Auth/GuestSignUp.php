@@ -10,6 +10,7 @@ use App\Models\Bio\Province;
 use App\Models\Bio\Village;
 use App\Models\Bio\WorkingHistory;
 use App\Models\Company\Company;
+use Carbon\Carbon;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
@@ -52,9 +53,9 @@ class GuestSignUp extends Page implements HasForms
     public $salary = null;
     public $education = null;
     public $certificate = null;
-    public $attachment = null;
+    public $attachment;
     // personal info
-    public $is_use_phone = false;
+    public $is_use_phone = true;
     public $is_use_email = false;
     public $kh_name = null;
     public $eng_name = null;
@@ -98,6 +99,7 @@ class GuestSignUp extends Page implements HasForms
     public $emergency_phone_2 = null;
     // password section
     public $telegram = null;
+    public $email = null;
     public $password = null;
     public $password_confirmation = null;
     public $user_profile = null;
@@ -152,11 +154,11 @@ class GuestSignUp extends Page implements HasForms
                         $this->currentAddress(),
                         // family information
                         $this->familyInfo(),
-                        // emergency info
+                        // emergency information
                         $this->emergencyInfo(),
                         // password section
                         $this->passwordSection(),
-                        // brother or relative info
+                        // brother or relative information
                         $this->relativeInfo(),
                         // agreement
                         $this->agreement(),
@@ -191,11 +193,15 @@ class GuestSignUp extends Page implements HasForms
                 "<h5 style='color: #3c8dbc;' class='text-xl font-bold'>សម្រាប់ កម្មករនិយោជិត</h5>"
             ));
     }
+    protected function sectionPage($title = ''): Section
+    {
+        return Section::make($title)
+            ->extraAttributes(['style' => 'border: 1px solid #3c8dbc; border-radius: 8px; padding: 16px; background-color: #ffffff; ']);
+    }
 
     protected function workingInfo()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 $this->title('ព័ត៌មានកន្លែងធ្វើការ', 'w-full p-2  text-white rounded-md'),
                 // single ID
@@ -240,6 +246,8 @@ class GuestSignUp extends Page implements HasForms
                     ->schema([
                         DatePicker::make('date_working')
                             ->label('កាលបរិច្ឆេទចូលធ្វើការងារ')
+                            ->maxDate(Carbon::now())
+                            ->rule('required|before:' . Carbon::now()->format('Y-m-d'))
                             ->required(),
                         Select::make('role')
                             ->required()
@@ -273,6 +281,8 @@ class GuestSignUp extends Page implements HasForms
                             ->placeholder('សញ្ញាបត្រ')
                             ->options(Education::where('type', 2)->pluck('name', 'id')->toArray()),
                         FileUpload::make('attachment')
+                            ->acceptedFileTypes(['image/*', 'application/pdf'])
+                            ->maxSize(5120)
                             ->columnSpan(2)
                             ->label('សូមភ្ជាប់វិញ្ញាបនបត្រមុខរបរ')
                             ->required(),
@@ -282,8 +292,7 @@ class GuestSignUp extends Page implements HasForms
 
     protected function personalInfo()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 $this->title('ព័ត៌មានផ្ទាល់ខ្លួន', 'w-full p-2  text-white rounded-md'),
                 // single ID
@@ -300,17 +309,26 @@ class GuestSignUp extends Page implements HasForms
                         Checkbox::make('is_use_phone')
                             ->label('ប្រើលេខទូរស័ព្ទ')
                             ->reactive()
-                            ->afterStateUpdated(fn($state, $set) => $state ? $set('is_use_email', false) : null),
+                            ->afterStateUpdated(function ($state, $set) {
+                                $set('is_use_phone', true);
+                                $set('is_use_email', false);
+                            }),
 
                         Checkbox::make('is_use_email')
                             ->label('ប្រើអ៊ីមែល')
                             ->reactive()
-                            ->afterStateUpdated(fn($state, $set) => $state ? $set('is_use_phone', false) : null),
+                            ->afterStateUpdated(function ($state, $set) {
+                                $set('is_use_phone', false);
+                                $set('is_use_email', true);
+                            }),
+
 
                         TextInput::make('kh_name')
+                            ->rule('required|regex:/^([\u1780-\u17FF]+[\u0020-\u002F]*)+$/')
                             ->label('ឈ្មោះជាភាសាខ្មែរដូចក្នុងអត្តសញ្ញាណបណ្ណ')
                             ->required(),
                         TextInput::make('eng_name')
+                            ->rule('required|regex:/^([\u0030-\u007A]+[\u0020-\u002F]*)+$/')
                             ->label('ឈ្មោះជាអក្សរឡាតាំង')
                             ->required(),
                         Select::make('role')
@@ -321,6 +339,8 @@ class GuestSignUp extends Page implements HasForms
                             ->options(['Male' => 'ប្រុស', 'Female' => 'ស្រី']),
                         DatePicker::make('user_dob')
                             ->label('ថ្ងៃខែឆ្នាំកំណើត')
+                            ->rule('required|before:' . Carbon::now()->subYears(15)->format('d-m-Y'))
+                            ->maxDate(Carbon::now()->subYears(15))
                             ->required(),
 
                         Grid::make([
@@ -342,17 +362,20 @@ class GuestSignUp extends Page implements HasForms
                                     ->options(['1' => 'អត្តសញ្ញាណប័ណ្ណសញ្ជាតិខ្មែរ', '2' => 'សំបុត្របញ្ជាក់កំណើត']),
                                 // Khmer ID fields
                                 TextInput::make('id_card_number_kh')
+                                    ->numeric()
                                     ->label('លេខអត្តសញ្ញាណប័ណ្ណសញ្ជាតិខ្មែរ')
                                     ->required($this->type_doc == 1)
                                     ->hidden($this->type_doc == 2),
 
                                 TextInput::make('id_card_expire')
                                     ->label('កាលបរិច្ឆេទផុតសុពលភាព')
+                                    ->rule('required|after:' . Carbon::now()->format('d-m-Y'))
                                     ->required($this->type_doc == 1)
                                     ->hidden($this->type_doc == 2),
 
                                 // Birth certificate / other docs
                                 TextInput::make('birth_doc_number')
+                                    ->numeric()
                                     ->label('លេខសំបុត្របញ្ជាក់កំណើត/សៀវភៅគ្រួសារ/លិខិតឆ្លងដែន/លិខិតធ្វើដំណើរ/លិខិតបញ្ជាក់អត្តសញ្ញាណ')
                                     ->required($this->type_doc == 2)
                                     ->hidden($this->type_doc != 2),
@@ -363,6 +386,8 @@ class GuestSignUp extends Page implements HasForms
                                     ->hidden($this->type_doc != 2),
                             ]),
                         FileUpload::make('attachment_job')
+                            ->acceptedFileTypes(['image/*', 'application/pdf'])
+                            ->maxSize(5120)
                             ->columnSpan(2)
                             ->label('សូមភ្ជាប់វិញ្ញាបនបត្រមុខរបរ')
                             ->required(),
@@ -372,8 +397,7 @@ class GuestSignUp extends Page implements HasForms
 
     protected function placeOfBirth()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 $this->title('ទីកន្លែងកំណើត', 'w-full p-2  text-white rounded-md'),
                 // single ID
@@ -449,8 +473,7 @@ class GuestSignUp extends Page implements HasForms
 
     protected function addressInIDcard()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 $this->title('អាសយដ្ឋាននៅក្នុងអត្តសញ្ញាណប័ណ្ណសញ្ជាតិខ្មែរ', 'w-full p-2  text-white rounded-md'),
                 // single ID
@@ -520,8 +543,7 @@ class GuestSignUp extends Page implements HasForms
 
     protected function currentAddress()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 $this->title('អាសយដ្ឋានស្នាក់នៅបច្ចុប្បន្ន', 'w-full p-2  text-white rounded-md'),
                 // single ID
@@ -535,7 +557,6 @@ class GuestSignUp extends Page implements HasForms
                 ])
                     ->gap(4)
                     ->schema([
-
                         Select::make('current_province_id')
                             ->label('រាជធានី-ខេត្ត')
                             ->required()
@@ -589,8 +610,7 @@ class GuestSignUp extends Page implements HasForms
 
     protected function familyInfo()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 $this->title('ព័ត៌មានគ្រួសារ', 'w-full p-2  text-white rounded-md'),
                 // single ID
@@ -614,24 +634,22 @@ class GuestSignUp extends Page implements HasForms
                                 3 => 'លែងលះ',
                             ])
                             ->reactive()
-                            ->afterStateUpdated(function ($state, $set) {
-                                dd($state);
-                            }),
+                            ->afterStateUpdated(function ($state, $set) {}),
 
                         TextInput::make('partner_name')
                             ->label('ឈ្មោះប្ដីឬប្រពន្ធ')
-                            ->required(),
+                            ->required(fn($get) => $get('family_status') == 2),
                         TextInput::make('partner_phone')
                             ->label('លេខទូរស័ព្ទ')
-                            ->required(),
+                            ->numeric()
+                            ->required(fn($get) => $get('family_status') == 2),
                     ])
             ]);
     }
 
     protected function emergencyInfo()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 $this->title('ព័ត៌មានករណីមានអាសន្ន', 'w-full p-2  text-white rounded-md'),
                 // single ID
@@ -652,9 +670,11 @@ class GuestSignUp extends Page implements HasForms
                             ->label('ត្រូវជា')
                             ->required(),
                         TextInput::make('emergency_phone_1')
+                            ->rule('required|integer|different:emergency_phone_2')
                             ->label('លេខទំនាក់ទំនងក្នុងករណីមានអាសន្នខ្សែទី ១')
                             ->required(),
                         TextInput::make('emergency_phone_2')
+                            ->rule('required|integer|different:emergency_phone_1')
                             ->label('លេខទំនាក់ទំនងក្នុងករណីមានអាសន្នខ្សែទី ២')
                             ->required(),
                     ])
@@ -663,8 +683,7 @@ class GuestSignUp extends Page implements HasForms
 
     protected function passwordSection()
     {
-        return Section::make()
-            ->extraAttributes(['class' => 'shadow-md rounded-md'])
+        return $this->sectionPage()
             ->schema([
                 Grid::make([
                     'default' => 4,
@@ -687,10 +706,19 @@ class GuestSignUp extends Page implements HasForms
                             ->gap(4)
                             ->schema([
                                 TextInput::make('telegram')
+                                    ->numeric()
                                     ->label('លេខទូរស័ព្ទដែលប្រើ Telegram')
-                                    ->required(),
+                                    ->visible(fn($get) => $get('is_use_phone'))
+                                    ->required(fn($get) => $get('is_use_phone')),
+
+                                TextInput::make('email')
+                                    ->label('អ៊ីមែល')
+                                    ->visible(fn($get) => $get('is_use_email'))
+                                    ->required(fn($get) => $get('is_use_email')),
+
                                 TextInput::make('password')
                                     ->label('លេខសម្ងាត់')
+                                    ->rule('required|min:8|regex:/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/')
                                     ->password()
                                     ->required()
                                     ->revealable()
@@ -725,7 +753,10 @@ class GuestSignUp extends Page implements HasForms
                             ->same('password'),
 
                         FileUpload::make('user_profile')
+                            ->acceptedFileTypes(['image/*', 'pdf'])
+                            ->maxSize(5120)
                             ->label('ភ្ជាប់រូបថត')
+                            // ->dropzoneText('សូមភ្ជាប់ឯកសារជា *.JPG, *.JPEG, *.PDF ដែលមានទំហំក្រោម 5MB')
                             ->image()
                             ->required()
                             ->imageEditor()
@@ -742,14 +773,21 @@ class GuestSignUp extends Page implements HasForms
     protected function relativeInfo()
     {
         return  Flex::make([
-            Section::make($this->customLabel('តើមនុស្សជាទីស្រលាញ់មានឈ្មោះអ្វី? ថ្ងៃខែឆ្នាំកំណេីត?'))
+            $this->sectionPage($this->customLabel('តើមនុស្សជាទីស្រលាញ់មានឈ្មោះអ្វី? ថ្ងៃខែឆ្នាំកំណេីត?'))
                 ->schema([
                     Flex::make([
-                        TextInput::make('lover_name')->label('ឈ្មោះ')->required(),
-                        DatePicker::make('lover_dob')->label('ថ្ងៃខែឆ្នាំកំណេីត')->required(),
+                        TextInput::make('lover_name')
+                            ->label('ឈ្មោះ')
+                            ->required(),
+                        DatePicker::make('lover_dob')
+                            ->label('ថ្ងៃខែឆ្នាំកំណេីត')
+                            ->rule('required|before:' . Carbon::now()->subYears(15)
+                                ->format('Y-m-d'))
+                            ->maxDate(Carbon::now()->subYears(15))
+                            ->required(),
                     ])
                 ]),
-            Section::make($this->customLabel('តើលោកអ្នកមានបងប្អូនចំនួនប៉ុន្មាននាក់? ប្រុសប៉ុន្មាន? ស្រីប៉ុន្មាន?'))
+            $this->sectionPage($this->customLabel('តើលោកអ្នកមានបងប្អូនចំនួនប៉ុន្មាននាក់? ប្រុសប៉ុន្មាន? ស្រីប៉ុន្មាន?'))
                 ->schema([
                     Flex::make([
                         TextInput::make('total_relative')->label('ចំនួនបងប្អូនសរុប')->numeric()->required(),
@@ -762,7 +800,7 @@ class GuestSignUp extends Page implements HasForms
 
     protected function agreement()
     {
-        return Section::make()
+        return $this->sectionPage()
             ->extraAttributes((['class' => 'border-b mb-5']))
             ->schema([
                 Checkbox::make('terms_of_service')
