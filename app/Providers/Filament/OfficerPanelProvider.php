@@ -31,6 +31,7 @@ class OfficerPanelProvider extends PanelProvider
                 'primary' => Color::Blue,
             ])
             ->login(OfficerLogin::class)
+            ->passwordReset()
             ->discoverResources(in: app_path('Filament/Officer/Resources'), for: 'App\Filament\Officer\Resources')
             ->discoverPages(in: app_path('Filament/Officer/Pages'), for: 'App\Filament\Officer\Pages')
             ->pages([
